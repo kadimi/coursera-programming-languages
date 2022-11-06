@@ -135,3 +135,59 @@ fun list_unique(list: int list) =
             else list_unique(tl list)
     end
 (* End of list_unique *)
+
+
+(* Start of 12 *)
+fun number_in_months_challenge(dates: (int * int * int) list, months: int list) = number_in_months(dates, list_unique(months))
+fun dates_in_months_challenge(dates: (int * int * int) list, months: int list) = dates_in_months(dates, list_unique(months))
+(* End of 12 *)
+
+
+(* Start of 13 *)
+fun reasonable_date(date: int * int * int) =
+    let
+        val year = #1 date
+        val month = #2 date
+        val day = #3 date
+        fun is_leap_year(y: int) =
+            (y mod 400 = 0)
+            orelse 
+            (
+                (y mod 4 = 0)
+                andalso
+                (y mod 100 <> 0)
+            )
+        fun month_length() =
+            let 
+                fun get_i(list: int list, i: int) =
+                    if null list
+                    then 0
+                    else if i = 1 then hd list else get_i(tl list, i - 1)
+            in
+                get_i(
+                    [
+                        31, 28 + (if is_leap_year year then 1 else 0), 31, 30,
+                        31, 30, 31, 31,
+                        30, 31, 30, 31
+                    ],
+                    month
+                )
+            end
+        fun validate_year() =
+            year > 0
+        fun validate_month() = 
+            1 <= month
+            andalso
+            month <= 12
+        fun validate_day() =
+            day > 0
+            andalso 
+            day < month_length()
+    in
+        validate_year()
+        andalso
+        validate_month()
+        andalso
+        validate_day()
+    end
+(* End of 13 *)
