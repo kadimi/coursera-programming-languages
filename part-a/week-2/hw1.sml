@@ -1,12 +1,8 @@
-(* Start of date_to_days *)
-fun date_to_days(date : int * int * int) =
-    (#1 date * 365) + (#2 date * 12) + (#3 date)
-(* End of date_to_days *)
-
-
 (* Start of 1 *)
 fun is_older (a: int * int * int, b: int * int * int) =
-    date_to_days a < date_to_days b
+    let fun date_to_days(date : int * int * int) = (#1 date * 365) + (#2 date * 12) + (#3 date)
+    in date_to_days a < date_to_days b
+    end
 (* End of 1 *)
 
 
