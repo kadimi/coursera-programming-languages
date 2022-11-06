@@ -27,7 +27,6 @@ fun number_in_months( dates: (int * int * int) list, months: int list) =
     else
         number_in_month(dates, hd months)
         + number_in_months(dates, tl months)
-
 (* End of 3 *)
 
 
@@ -39,7 +38,6 @@ fun dates_in_month( dates: (int * int * int) list, month : int) =
         if number_in_month([hd dates], month) = 1
         then hd dates :: dates_in_month(tl dates, month)
         else dates_in_month(tl dates, month)
-
 (* End of 4 *)
 
 
@@ -50,7 +48,6 @@ fun dates_in_months( dates: (int * int * int) list, months: int list) =
     else 
         dates_in_month(dates, hd months)
         @ dates_in_months(dates, tl months)
-
 (* End of 5 *)
 
 
@@ -59,7 +56,6 @@ fun get_nth ( words: string list, n: int) =
     if n = 1
     then hd words
     else get_nth(tl words, n - 1)
-
 (* End of 6 *)
 
 
@@ -75,7 +71,6 @@ fun date_to_string( year: int, month: int, day: int ) =
     in
         month ^ " " ^ day ^ ", " ^ year 
     end
-
 (* End of 7 *)
 
 
@@ -95,8 +90,6 @@ fun number_before_reaching_sum(sum: int, numbers: int list) =
         in
             add_with_limit(0, numbers, 0)
         end
-
-
 (* End of 8 *)
 
 
